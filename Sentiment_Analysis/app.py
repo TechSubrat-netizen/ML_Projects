@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-import seaborn as sns
+
 import streamlit as st
 import pickle
 import re
@@ -15,7 +15,7 @@ stop_words = set(stopwords.words('english'))
 st.set_page_config(page_title="Sentiment Analysis", layout="centered")
 
 # Title and description
-st.title("🎯 Sentiment Analysis Web App")
+st.title("🎯 Sentiment Analysis ")
 st.write("Analyze the sentiment of your text - Positive or Negative")
 st.write("---")
 
