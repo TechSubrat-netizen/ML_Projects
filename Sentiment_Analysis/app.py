@@ -4,6 +4,7 @@ import numpy as np
 import streamlit as st
 import pickle
 import re
+from pathlib import Path
 from nltk.corpus import stopwords
 import nltk
 
@@ -19,12 +20,17 @@ st.title("🎯 Sentiment Analysis ")
 st.write("Analyze the sentiment of your text - Positive or Negative")
 st.write("---")
 
+# Base path for model files
+BASE_DIR = Path(__file__).resolve().parent
+MODEL_PATH = BASE_DIR / 'sentiment_analysis_model.pkl'
+VECTORIZER_PATH = BASE_DIR / 'tfidf_vectorizer.pkl'
+
 # Load the pre-trained model and vectorizer
 @st.cache_resource
 def load_models():
     import joblib
-    model = joblib.load('sentiment_analysis_model.pkl')
-    tfidf = joblib.load('tfidf_vectorizer.pkl')
+    model = joblib.load(MODEL_PATH)
+    tfidf = joblib.load(VECTORIZER_PATH)
     return model, tfidf
 
 # Text cleaning function
